@@ -1,5 +1,5 @@
 {
-  "name": "@ssumo/quill-resize-module",
+  "name": "@galaxis/quill-resize-module",
   "version": "1.0.2",
   "main": "./dist/quill-resize-module.js",
   "typings": "types/main.d.ts",

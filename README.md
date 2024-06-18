@@ -13,11 +13,11 @@ a module that enables resize for image/iframe/video.
 
 ### Webpack/ES6
 
-`npm install @ssumo/quill-resize-module`
+`npm install @galaxis/quill-resize-module`
 
 ```javascript
 import Quill from "quill";
-import ResizeModule from "@ssumo/quill-resize-module";
+import ResizeModule from "@galaxis/quill-resize-module";
 
 Quill.register("modules/resize", ResizeModule);
 
