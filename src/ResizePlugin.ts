@@ -18,16 +18,18 @@ class ResizeElement extends HTMLElement {
 }
 
 interface ResizePluginOption {
+  showSize?: boolean;
   locale?: Locale;
   [index: string]: any;
 }
 const template = `
+<div class="showSize" name="ql-size" title="{0}">mi ezzzz</div>
 <div class="handler" title="{0}"></div>
 <div class="toolbar">
   <div class="group">
     <a class="btn" data-type="width" data-styles="width:100%">100%</a>
     <a class="btn" data-type="width" data-styles="width:50%">50%</a>
-    <span class="input-wrapper"><input data-type="width" maxlength="3" /><span class="suffix">%</span><span class="tooltip">Press enter key to apply change!</span></span>
+    <span class="input-wrapper"><input data-type="width" maxlength="3" /> %</span>
     <a class="btn" data-type="width" data-styles="width:auto">{4}</a>
   </div>
   <div class="group">
