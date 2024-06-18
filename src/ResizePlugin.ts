@@ -18,18 +18,20 @@ class ResizeElement extends HTMLElement {
 }
 
 interface ResizePluginOption {
-  showSize?: boolean;
   locale?: Locale;
   [index: string]: any;
 }
+
+let pluginOptions: ResizePluginOption | undefined;
+
 const template = `
-<div class="showSize" name="ql-size" title="{0}">mi ezzzz</div>
+<div class="showSize" name="ql-size" title="{0}">{size}</div>
 <div class="handler" title="{0}"></div>
 <div class="toolbar">
   <div class="group">
     <a class="btn" data-type="width" data-styles="width:100%">100%</a>
     <a class="btn" data-type="width" data-styles="width:50%">50%</a>
-    <span class="input-wrapper"><input data-type="width" maxlength="3" /> %</span>
+    <span class="input-wrapper"><input data-type="width" type="number" maxlength="3" /><span class="suffix">%</span><span class="tooltip">Press enter key to apply change!</span></span>
     <a class="btn" data-type="width" data-styles="width:auto">{4}</a>
   </div>
   <div class="group">
@@ -62,7 +64,7 @@ class ResizePlugin {
         height: resizeTarget.clientHeight,
       };
     }
-
+    pluginOptions = options;
     this.container = container;
     this.initResizer();
     this.positionResizerToTarget(resizeTarget);
@@ -100,6 +102,12 @@ class ResizePlugin {
       this.resizer.style.setProperty("top", el.offsetTop + "px");
       this.resizer.style.setProperty("width", el.clientWidth + "px");
       this.resizer.style.setProperty("height", el.clientHeight + "px");
+      // document.getElementsByName("ql-size").item(0).innerHTML = `heheee`;
+      document.getElementsByName("ql-size").item(0).innerHTML = `${
+        el.getAttribute("width") ? el.getAttribute("width") : el.clientWidth
+      } x ${
+        el.getAttribute("height") ? el.getAttribute("height") : el.clientHeight
+      }`;
     }
   }
   bindEvents() {
