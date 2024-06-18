@@ -78,7 +78,6 @@
         altTip: "Press and hold alt to lock ratio!",
         inputTip: "Press enter key to apply change!",
     };
-    //# sourceMappingURL=i18n.js.map
 
     function format(str) {
         var values = [];
@@ -94,7 +93,6 @@
             }
         });
     }
-    //# sourceMappingURL=utils.js.map
 
     var ResizeElement = /** @class */ (function (_super) {
         __extends(ResizeElement, _super);
@@ -105,7 +103,7 @@
         }
         return ResizeElement;
     }(HTMLElement));
-    var template = "\n<div class=\"showSize\" name=\"ql-size\" title=\"{0}\">{size}</div>\n<div class=\"handler\" title=\"{0}\"></div>\n<div class=\"toolbar\">\n  <div class=\"group\">\n    <a class=\"btn\" data-type=\"width\" data-styles=\"width:100%\">100%</a>\n    <a class=\"btn\" data-type=\"width\" data-styles=\"width:50%\">50%</a>\n    <span class=\"input-wrapper\"><input data-type=\"width\" type=\"number\" maxlength=\"3\" /><span class=\"suffix\">%</span><span class=\"tooltip\">Press enter key to apply change!</span></span>\n    <a class=\"btn\" data-type=\"width\" data-styles=\"width:auto\">{4}</a>\n  </div>\n  <div class=\"group\">\n    <a class=\"btn\" data-type=\"align\" data-styles=\"float:left\">{1}</a>\n    <a class=\"btn\" data-type=\"align\" data-styles=\"display:block;margin:auto;\">{2}</a>\n    <a class=\"btn\" data-type=\"align\" data-styles=\"float:right;\">{3}</a>\n    <a class=\"btn\" data-type=\"align\" data-styles=\"\">{4}</a>\n  </div>\n</div>\n";
+    var template = "\n<div class=\"showSize\" name=\"ql-size\" title=\"{0}\">{size}</div>\n<div class=\"handler\" title=\"{0}\"></div>\n<div class=\"toolbar\">\n  <div class=\"group\">\n    <a class=\"btn\" data-type=\"width\" data-styles=\"width:100%\">100%</a>\n    <a class=\"btn\" data-type=\"width\" data-styles=\"width:50%\">50%</a>\n    <span class=\"input-wrapper\"><input data-type=\"width\" type=\"number\" maxlength=\"3\" /><span class=\"suffix\">%</span><span class=\"tooltip\">Press enter key to apply change!</span></span>\n    <a class=\"btn\" data-type=\"width\" data-styles=\"width:auto\">{4}</a>\n  </div>\n  <div class=\"group\">\n    <a class=\"btn\" data-type=\"align\" data-styles=\"float:left; margin-right:12px\">{1}</a>\n    <a class=\"btn\" data-type=\"align\" data-styles=\"display:block; margin:auto;\">{2}</a>\n    <a class=\"btn\" data-type=\"align\" data-styles=\"float:right; margin-left:12px\">{3}</a>\n    <a class=\"btn\" data-type=\"align\" data-styles=\"\">{4}</a>\n  </div>\n</div>\n";
     var ResizePlugin = /** @class */ (function () {
         function ResizePlugin(resizeTarget, container, options) {
             this.resizer = null;
@@ -270,7 +268,6 @@
         IframeClick.interval = null;
         return IframeClick;
     }());
-    //# sourceMappingURL=IframeClick.js.map
 
     function QuillResizeModule(quill, options) {
         var container = quill.root;
@@ -308,7 +305,6 @@
             }
         }, { capture: true });
     }
-    //# sourceMappingURL=main.js.map
 
     return QuillResizeModule;
 
