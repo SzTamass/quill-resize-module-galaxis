@@ -18,12 +18,10 @@ const quill = new Quill(editor, {
   modules: {
     resize: {
       locale: {
-        altTip: "按住alt键比例缩放",
-        inputTip: "回车键确认",
-        floatLeft: "靠左",
-        floatRight: "靠右",
-        center: "居中",
-        restore: "还原",
+        floatLeft: "Left",
+        floatRight: "Right",
+        center: "Center",
+        restore: "Default",
       },
     },
   },
