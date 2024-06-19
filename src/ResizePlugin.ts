@@ -31,14 +31,13 @@ const template = `
   <div class="group">
     <a class="btn" data-type="width" data-styles="width:100%">100%</a>
     <a class="btn" data-type="width" data-styles="width:50%">50%</a>
-    <span class="input-wrapper"><input data-type="width" type="number" maxlength="3" /><span class="suffix">%</span><span class="tooltip">Press enter key to apply change!</span></span>
+    <span class="input-wrapper"><input data-type="width" type="number" maxlength="3" min="0" max="100" onKeyUp="if(this.value>100){this.value='100';}else if(this.value<0){this.value='0';}"/><span class="suffix">%</span><span class="tooltip">Press enter key to apply change!</span></span>
     <a class="btn" data-type="width" data-styles="width:auto">{4}</a>
   </div>
   <div class="group">
     <a class="btn" data-type="align" data-styles="float:left; margin-right:12px; margin-left:0px">{1}</a>
-    <a class="btn" data-type="align" data-styles="display:block; margin:auto;">{2}</a>
+    <a class="btn" data-type="align" data-styles="float:none; display:block; margin:auto">{2}</a>
     <a class="btn" data-type="align" data-styles="float:right; margin-left:12px; margin-right:0px">{3}</a>
-    <a class="btn" data-type="align" data-styles="">{4}</a>
   </div>
 </div>
 `;
