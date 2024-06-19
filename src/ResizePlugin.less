@@ -18,12 +18,12 @@
     top: -5em;
     left: 50%;
     padding: 0.5em;
-    border: 1px solid #fff;
     border-radius: 3px;
-    background-color: #fff;
-    box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
     transform: translateX(-50%);
     width: 20em;
+    background-color: #222;
+    box-shadow: 2px 2px 8px #000;
+    border-radius: 8px;
     .group {
       display: flex;
       border: 1px solid #aaa;
@@ -31,7 +31,8 @@
       white-space: nowrap;
       text-align: center;
       line-height: 2;
-      color: rgba(0, 0, 0, 0.65);
+      color: #aaa;
+      font-family: Arial, Helvetica, sans-serif;
       &:not(:first-child) {
         margin-top: 0.5em;
       }
@@ -45,18 +46,20 @@
         user-select: none;
         color: inherit;
         &:not(:last-child) {
-          border-right: 1px solid #bbb;
+          border-right: 1px solid #4d4d4d;
         }
         &:not(.btn-group):active {
           background-color: rgba(0, 0, 0, 0.1);
         }
       }
-
+      .btn:hover {
+        color: #faf5f7;
+        cursor: pointer;
+      }
       .input-wrapper {
         width: 25%;
-        border: 1px solid #eee;
         position: relative;
-        border-right: 1px solid #bbb;
+        border-right: 1px solid #4d4d4d;
         min-width: 4em;
 
         &::after {
@@ -76,9 +79,11 @@
           outline: none;
           padding: 0 0.5em;
           padding-right: 1.5em;
+          background-color: #222;
           &:focus ~ .tooltip {
             display: block;
           }
+          margin: 0;
         }
         .suffix {
           position: absolute;
