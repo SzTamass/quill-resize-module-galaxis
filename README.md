@@ -18,10 +18,13 @@ const quill = new Quill(editor, {
   modules: {
     resize: {
       locale: {
-        floatLeft: "Left",
-        floatRight: "Right",
-        center: "Center",
-        restore: "Default",
+        //By default:
+        // floatLeft: "Left",
+        // floatRight: "Right",
+        // center: "Center",
+        // restore: "Default",
+        // altTip: "Press and hold alt to lock ratio!",
+        // inputTip: "Press enter key to apply change!",
       },
     },
   },

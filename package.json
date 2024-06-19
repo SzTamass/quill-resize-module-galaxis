@@ -1,6 +1,6 @@
 {
   "name": "@galaxis/quill-resize-module",
-  "version": "1.0.2",
+  "version": "2.0.0",
   "main": "./dist/quill-resize-module.js",
   "typings": "types/main.d.ts",
   "author": {
