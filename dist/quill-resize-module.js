@@ -78,7 +78,6 @@
         altTip: "Press and hold alt to lock ratio!",
         inputTip: "Press enter key to apply change!",
     };
-    //# sourceMappingURL=i18n.js.map
 
     function format(str) {
         var values = [];
@@ -94,7 +93,6 @@
             }
         });
     }
-    //# sourceMappingURL=utils.js.map
 
     var ResizeElement = /** @class */ (function (_super) {
         __extends(ResizeElement, _super);
@@ -281,7 +279,6 @@
         IframeClick.interval = null;
         return IframeClick;
     }());
-    //# sourceMappingURL=IframeClick.js.map
 
     function QuillResizeModule(quill, options) {
         var container = quill.root;
@@ -319,7 +316,6 @@
             }
         }, { capture: true });
     }
-    //# sourceMappingURL=main.js.map
 
     return QuillResizeModule;
 
