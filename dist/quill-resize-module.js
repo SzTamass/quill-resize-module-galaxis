@@ -150,7 +150,7 @@
                 this.resizer.style.setProperty("height", el.clientHeight + "px");
                 document
                     .getElementsByName("ql-size")
-                    .item(0).innerHTML = widthPercent.toFixed(2) + "%";
+                    .item(0).innerHTML = widthPercent.toFixed(0) + "%";
             }
         };
         ResizePlugin.prototype.bindEvents = function () {

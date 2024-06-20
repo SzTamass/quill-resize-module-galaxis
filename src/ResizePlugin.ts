@@ -110,7 +110,7 @@ class ResizePlugin {
 
       document
         .getElementsByName("ql-size")
-        .item(0).innerHTML = `${widthPercent.toFixed(2)}%`;
+        .item(0).innerHTML = `${widthPercent.toFixed(0)}%`;
     }
   }
 
