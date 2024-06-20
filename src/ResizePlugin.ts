@@ -95,20 +95,27 @@ class ResizePlugin {
     }
     this.resizer = resizer;
   }
+
   positionResizerToTarget(el: HTMLElement) {
     if (this.resizer !== null) {
+      const parentWidth = el.parentElement?.clientWidth || 1;
+      const parentHeight = el.parentElement?.clientHeight || 1;
+      const widthPercent = (el.clientWidth / parentWidth) * 100;
+      const heightPercent = (el.clientHeight / parentHeight) * 100;
+
       this.resizer.style.setProperty("left", el.offsetLeft + "px");
       this.resizer.style.setProperty("top", el.offsetTop + "px");
       this.resizer.style.setProperty("width", el.clientWidth + "px");
       this.resizer.style.setProperty("height", el.clientHeight + "px");
-      // document.getElementsByName("ql-size").item(0).innerHTML = `heheee`;
-      document.getElementsByName("ql-size").item(0).innerHTML = `${
-        el.getAttribute("width") ? el.getAttribute("width") : el.clientWidth
-      } x ${
-        el.getAttribute("height") ? el.getAttribute("height") : el.clientHeight
-      }`;
+
+      document
+        .getElementsByName("ql-size")
+        .item(0).innerHTML = `${widthPercent.toFixed(
+        2
+      )}% x ${heightPercent.toFixed(2)}%`;
     }
   }
+
   bindEvents() {
     if (this.resizer !== null) {
       this.resizer.addEventListener("mousedown", this.startResize);
@@ -118,6 +125,7 @@ class ResizePlugin {
     window.addEventListener("mouseup", this.endResize);
     window.addEventListener("mousemove", this.resizing);
   }
+
   _setStylesForToolbar(type: string, styles: string | undefined) {
     const storeKey = `_styles_${type}`;
     const style: CSSStyleDeclaration = this.resizeTarget.style;
@@ -130,6 +138,7 @@ class ResizePlugin {
     this.positionResizerToTarget(this.resizeTarget);
     this.options?.onChange(this.resizeTarget);
   }
+
   toolbarInputChange(e: Event) {
     const target: HTMLInputElement = e.target as HTMLInputElement;
     const type = target?.dataset?.type;
@@ -138,6 +147,7 @@ class ResizePlugin {
       this._setStylesForToolbar(type, `width: ${Number(value)}%;`);
     }
   }
+
   toolbarClick(e: MouseEvent) {
     const target: HTMLElement = e.target as HTMLElement;
     const type = target?.dataset?.type;
@@ -146,6 +156,7 @@ class ResizePlugin {
       this._setStylesForToolbar(type, target?.dataset?.styles);
     }
   }
+
   startResize(e: MouseEvent) {
     const target: HTMLElement = e.target as HTMLElement;
     if (target.classList.contains("handler") && e.which === 1) {
@@ -157,10 +168,12 @@ class ResizePlugin {
       };
     }
   }
+
   endResize() {
     this.startResizePosition = null;
     this.options?.onChange(this.resizeTarget);
   }
+
   resizing(e: MouseEvent) {
     if (!this.startResizePosition) return;
     const deltaX: number = e.clientX - this.startResizePosition.left;
@@ -170,18 +183,29 @@ class ResizePlugin {
     width += deltaX;
     height += deltaY;
 
+    const parentWidth = this.resizeTarget.parentElement?.clientWidth || 1;
+    const parentHeight = this.resizeTarget.parentElement?.clientHeight || 1;
+    let widthPercent = (width / parentWidth) * 100;
+    let heightPercent = (height / parentHeight) * 100;
+
     if (e.altKey) {
       const originSize = this.resizeTarget.originSize as Size;
       const rate: number = originSize.height / originSize.width;
-      height = rate * width;
+      heightPercent = rate * widthPercent;
     }
 
-    this.resizeTarget.style.setProperty("width", Math.max(width, 30) + "px");
-    this.resizeTarget.style.setProperty("height", Math.max(height, 30) + "px");
+    this.resizeTarget.style.setProperty(
+      "width",
+      Math.max(widthPercent, 1) + "%"
+    );
+    this.resizeTarget.style.setProperty(
+      "height",
+      Math.max(heightPercent, 1) + "%"
+    );
     this.positionResizerToTarget(this.resizeTarget);
   }
 
-  destory() {
+  destroy() {
     this.container.removeChild(this.resizer as HTMLElement);
     window.removeEventListener("mouseup", this.endResize);
     window.removeEventListener("mousemove", this.resizing);

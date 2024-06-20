@@ -65,7 +65,7 @@ function QuillResizeModule(quill: Quill, options?: QuillResizeModuleOptions) {
         target !== resizeTarge &&
         !resizePlugin?.resizer?.contains?.(target)
       ) {
-        resizePlugin?.destory?.();
+        resizePlugin?.destroy?.();
         resizePlugin = null;
         resizeTarge = null;
       }
