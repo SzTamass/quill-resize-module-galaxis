@@ -56,7 +56,7 @@
         return __assign.apply(this, arguments);
     };
 
-    __$styleInject("#editor-resizer {\n  position: absolute;\n  border: 1px dashed #fff;\n  background-color: rgba(0, 0, 0, 0.5);\n}\n#editor-resizer .handler {\n  position: absolute;\n  right: -5px;\n  bottom: -5px;\n  width: 10px;\n  height: 10px;\n  border: 1px solid #333;\n  background-color: rgba(255, 255, 255, 0.8);\n  cursor: nwse-resize;\n  user-select: none;\n}\n#editor-resizer .toolbar {\n  position: absolute;\n  top: -5em;\n  left: 50%;\n  padding: 0.5em;\n  border-radius: 3px;\n  transform: translateX(-50%);\n  width: 20em;\n  background-color: #222;\n  box-shadow: 2px 2px 8px #000;\n  border-radius: 8px;\n}\n#editor-resizer .toolbar .group {\n  display: flex;\n  border: 1px solid #aaa;\n  border-radius: 6px;\n  white-space: nowrap;\n  text-align: center;\n  line-height: 2;\n  color: #aaa;\n  padding: 4px;\n  font-family: Arial, Helvetica, sans-serif;\n}\n#editor-resizer .toolbar .group:not(:first-child) {\n  margin-top: 0.5em;\n}\n#editor-resizer .toolbar .group .btn {\n  flex: 1 0 0;\n  text-align: center;\n  width: 25%;\n  padding: 0;\n  display: inline-block;\n  vertical-align: top;\n  user-select: none;\n  color: inherit;\n  font-size: 14px !important;\n}\n#editor-resizer .toolbar .group .btn:not(:last-child) {\n  border-right: 1px solid #4d4d4d;\n}\n#editor-resizer .toolbar .group .btn:not(.btn-group):active {\n  background-color: rgba(0, 0, 0, 0.1);\n}\n#editor-resizer .toolbar .group .btn:hover {\n  color: #faf5f7;\n  cursor: pointer;\n}\n#editor-resizer .toolbar .group .input-wrapper {\n  width: 25%;\n  position: relative;\n  border-right: 1px solid #4d4d4d;\n  min-width: 4em;\n}\n#editor-resizer .toolbar .group .input-wrapper::after {\n  content: \" \";\n  position: absolute;\n}\n#editor-resizer .toolbar .group .input-wrapper input {\n  color: inherit;\n  text-align: center;\n  width: 100%;\n  border: none;\n  outline: none;\n  padding: 0 0.5em;\n  padding-right: 1.5em;\n  background-color: #222;\n  margin: 0;\n}\n#editor-resizer .toolbar .group .input-wrapper input:focus ~ .tooltip {\n  display: block;\n}\n#editor-resizer .toolbar .group .input-wrapper .suffix {\n  position: absolute;\n  right: 0.5em;\n}\n#editor-resizer .toolbar .group .input-wrapper .tooltip {\n  display: none;\n  position: absolute;\n  top: 100%;\n  left: 0;\n  background-color: #fff;\n  box-shadow: 0 0 3px #a7a7a7;\n  padding: 0 0.6em;\n  border-radius: 5px;\n  zoom: 0.85;\n}\n#editor-resizer .showSize {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  padding: 0.1em;\n  border: 1px solid rgba(255, 255, 255, 0.8);\n  border-radius: 2px;\n  background-color: rgba(255, 255, 255, 0.8);\n  box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);\n  transform: translateX(-50%);\n}\n#editor-resizer input[type=\"number\"] {\n  -moz-appearance: textfield !important;\n  -webkit-appearance: none !important;\n  appearance: textfield !important;\n}\n#editor-resizer input::-webkit-outer-spin-button,\n#editor-resizer input::-webkit-inner-spin-button {\n  -webkit-appearance: none;\n  margin: 0;\n}\n");
+    __$styleInject("#editor-resizer {\n  position: absolute;\n  border: 1px dashed #fff;\n  background-color: rgba(0, 0, 0, 0.5);\n}\n#editor-resizer .handler {\n  position: absolute;\n  right: -5px;\n  bottom: -5px;\n  width: 10px;\n  height: 10px;\n  border: 1px solid #333;\n  background-color: rgba(255, 255, 255, 0.8);\n  cursor: nwse-resize;\n  user-select: none;\n}\n#editor-resizer .toolbar {\n  position: absolute;\n  top: -5em;\n  left: 50%;\n  padding: 0.5em;\n  border-radius: 3px;\n  transform: translateX(-50%);\n  width: 20em;\n  background-color: #222;\n  box-shadow: 2px 2px 8px #000;\n  border-radius: 8px;\n}\n#editor-resizer .toolbar .group {\n  display: flex;\n  border: 1px solid #aaa;\n  border-radius: 6px;\n  white-space: nowrap;\n  text-align: center;\n  line-height: 2;\n  color: #aaa;\n  padding: 4px;\n  font-family: Arial, Helvetica, sans-serif;\n}\n#editor-resizer .toolbar .group:not(:first-child) {\n  margin-top: 0.5em;\n}\n#editor-resizer .toolbar .group .btn {\n  flex: 1 0 0;\n  text-align: center;\n  width: 25%;\n  padding: 0;\n  display: inline-block;\n  vertical-align: top;\n  user-select: none;\n  color: inherit;\n  font-size: 14px !important;\n}\n#editor-resizer .toolbar .group .btn:not(:last-child) {\n  border-right: 1px solid #4d4d4d;\n}\n#editor-resizer .toolbar .group .btn:not(.btn-group):active {\n  background-color: rgba(0, 0, 0, 0.1);\n}\n#editor-resizer .toolbar .group .btn:hover {\n  color: #faf5f7;\n  cursor: pointer;\n}\n#editor-resizer .toolbar .group .input-wrapper {\n  width: 25%;\n  position: relative;\n  border-right: 1px solid #4d4d4d;\n  min-width: 4em;\n}\n#editor-resizer .toolbar .group .input-wrapper::after {\n  content: \" \";\n  position: absolute;\n}\n#editor-resizer .toolbar .group .input-wrapper input {\n  color: inherit;\n  text-align: center;\n  width: 100%;\n  border: none;\n  outline: none;\n  padding: 0 0.5em;\n  padding-right: 1.5em;\n  background-color: #222;\n  margin: 0;\n}\n#editor-resizer .toolbar .group .input-wrapper input:focus ~ .tooltip {\n  display: block;\n}\n#editor-resizer .toolbar .group .input-wrapper .suffix {\n  position: absolute;\n  right: 0.5em;\n}\n#editor-resizer .toolbar .group .input-wrapper .tooltip {\n  display: none;\n  position: absolute;\n  top: 100%;\n  left: 0;\n  background-color: #fff;\n  box-shadow: 0 0 3px #a7a7a7;\n  padding: 0 0.6em;\n  border-radius: 5px;\n  zoom: 0.85;\n}\n#editor-resizer .showSize {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  padding: 0.5em;\n  border-radius: 8px;\n  background-color: #222;\n  box-shadow: 2px 2px 8px #000;\n  transform: translateX(-50%);\n  color: #faf5f7;\n  font-size: 16px;\n}\n#editor-resizer input[type=\"number\"] {\n  -moz-appearance: textfield !important;\n  -webkit-appearance: none !important;\n  appearance: textfield !important;\n}\n#editor-resizer input::-webkit-outer-spin-button,\n#editor-resizer input::-webkit-inner-spin-button {\n  -webkit-appearance: none;\n  margin: 0;\n}\n");
 
     var I18n = /** @class */ (function () {
         function I18n(config) {
@@ -71,13 +71,14 @@
         return I18n;
     }());
     var defaultLocale = {
-        floatLeft: "left",
-        floatRight: "right",
-        center: "center",
-        restore: "restore",
+        floatLeft: "Left",
+        floatRight: "Right",
+        center: "Center",
+        restore: "Default",
         altTip: "Press and hold alt to lock ratio!",
         inputTip: "Press enter key to apply change!",
     };
+    //# sourceMappingURL=i18n.js.map
 
     function format(str) {
         var values = [];
@@ -93,6 +94,7 @@
             }
         });
     }
+    //# sourceMappingURL=utils.js.map
 
     var ResizeElement = /** @class */ (function (_super) {
         __extends(ResizeElement, _super);
@@ -138,19 +140,19 @@
             this.resizer = resizer;
         };
         ResizePlugin.prototype.positionResizerToTarget = function (el) {
-            var _a, _b;
+            var _a;
             if (this.resizer !== null) {
                 var parentWidth = ((_a = el.parentElement) === null || _a === void 0 ? void 0 : _a.clientWidth) || 1;
-                var parentHeight = ((_b = el.parentElement) === null || _b === void 0 ? void 0 : _b.clientHeight) || 1;
+                // const parentHeight = el.parentElement?.clientHeight || 1;
                 var widthPercent = (el.clientWidth / parentWidth) * 100;
-                var heightPercent = (el.clientHeight / parentHeight) * 100;
+                // const heightPercent = (el.clientHeight / parentHeight) * 100;
                 this.resizer.style.setProperty("left", el.offsetLeft + "px");
                 this.resizer.style.setProperty("top", el.offsetTop + "px");
                 this.resizer.style.setProperty("width", el.clientWidth + "px");
                 this.resizer.style.setProperty("height", el.clientHeight + "px");
                 document
                     .getElementsByName("ql-size")
-                    .item(0).innerHTML = widthPercent.toFixed(2) + "% x " + heightPercent.toFixed(2) + "%";
+                    .item(0).innerHTML = widthPercent.toFixed(2) + "%";
             }
         };
         ResizePlugin.prototype.bindEvents = function () {
@@ -279,6 +281,7 @@
         IframeClick.interval = null;
         return IframeClick;
     }());
+    //# sourceMappingURL=IframeClick.js.map
 
     function QuillResizeModule(quill, options) {
         var container = quill.root;
@@ -316,6 +319,7 @@
             }
         }, { capture: true });
     }
+    //# sourceMappingURL=main.js.map
 
     return QuillResizeModule;
 

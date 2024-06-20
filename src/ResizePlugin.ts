@@ -99,9 +99,9 @@ class ResizePlugin {
   positionResizerToTarget(el: HTMLElement) {
     if (this.resizer !== null) {
       const parentWidth = el.parentElement?.clientWidth || 1;
-      const parentHeight = el.parentElement?.clientHeight || 1;
+      // const parentHeight = el.parentElement?.clientHeight || 1;
       const widthPercent = (el.clientWidth / parentWidth) * 100;
-      const heightPercent = (el.clientHeight / parentHeight) * 100;
+      // const heightPercent = (el.clientHeight / parentHeight) * 100;
 
       this.resizer.style.setProperty("left", el.offsetLeft + "px");
       this.resizer.style.setProperty("top", el.offsetTop + "px");
@@ -110,9 +110,7 @@ class ResizePlugin {
 
       document
         .getElementsByName("ql-size")
-        .item(0).innerHTML = `${widthPercent.toFixed(
-        2
-      )}% x ${heightPercent.toFixed(2)}%`;
+        .item(0).innerHTML = `${widthPercent.toFixed(2)}%`;
     }
   }
 

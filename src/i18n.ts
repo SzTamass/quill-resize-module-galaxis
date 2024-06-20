@@ -20,10 +20,10 @@ class I18n {
 }
 
 const defaultLocale: Locale = {
-  floatLeft: "left",
-  floatRight: "right",
-  center: "center",
-  restore: "restore",
+  floatLeft: "Left",
+  floatRight: "Right",
+  center: "Center",
+  restore: "Default",
   altTip: "Press and hold alt to lock ratio!",
   inputTip: "Press enter key to apply change!",
 };
