@@ -274,7 +274,7 @@
                 }
             }
         };
-        IframeClick.resolution = 200;
+        IframeClick.resolution = 500;
         IframeClick.iframes = [];
         IframeClick.interval = null;
         return IframeClick;
@@ -282,25 +282,38 @@
 
     function QuillResizeModule(quill, options) {
         var container = quill.root;
-        var resizeTarge;
+        var resizeTarget;
         var resizePlugin;
         function triggerTextChange() {
             var Delta = quill.getContents().constructor;
             var delta = new Delta().retain(1);
             quill.updateContents(delta);
         }
+        function embedVideoAsImage(videoUrl) {
+            var thumbnailUrl = generateThumbnailUrl(videoUrl);
+            var img = document.createElement("img");
+            img.src = thumbnailUrl;
+            img.setAttribute("data-video-url", videoUrl);
+            img.style.width = "100%";
+            container.appendChild(img);
+            return img;
+        }
         container.addEventListener("click", function (e) {
             var target = e.target;
             if (e.target && ["img", "video"].includes(target.tagName.toLowerCase())) {
-                resizeTarge = target;
+                resizeTarget = target;
                 resizePlugin = new ResizePlugin(target, container.parentElement, __assign(__assign({}, options), { onChange: triggerTextChange }));
             }
         });
-        quill.on("text-change", function (delta, source) {
-            // iframe 大小调整
+        quill.on("text-change", function () {
+            container.querySelectorAll("iframe").forEach(function (item) {
+                var videoUrl = item.src;
+                var thumbnailImg = embedVideoAsImage(videoUrl);
+                item.replaceWith(thumbnailImg);
+            });
             container.querySelectorAll("iframe").forEach(function (item) {
                 IframeClick.track(item, function () {
-                    resizeTarge = item;
+                    resizeTarget = item;
                     resizePlugin = new ResizePlugin(item, container.parentElement, __assign(__assign({}, options), { onChange: triggerTextChange }));
                 });
             });
@@ -308,13 +321,29 @@
         document.addEventListener("mousedown", function (e) {
             var _a, _b, _c;
             var target = e.target;
-            if (target !== resizeTarge &&
-                !((_b = (_a = resizePlugin === null || resizePlugin === void 0 ? void 0 : resizePlugin.resizer) === null || _a === void 0 ? void 0 : _a.contains) === null || _b === void 0 ? void 0 : _b.call(_a, target))) {
+            if (target !== resizeTarget && !((_b = (_a = resizePlugin === null || resizePlugin === void 0 ? void 0 : resizePlugin.resizer) === null || _a === void 0 ? void 0 : _a.contains) === null || _b === void 0 ? void 0 : _b.call(_a, target))) {
                 (_c = resizePlugin === null || resizePlugin === void 0 ? void 0 : resizePlugin.destroy) === null || _c === void 0 ? void 0 : _c.call(resizePlugin);
                 resizePlugin = null;
-                resizeTarge = null;
+                resizeTarget = null;
             }
         }, { capture: true });
+    }
+    function generateThumbnailUrl(videoUrl) {
+        var videoId = extractVideoId(videoUrl);
+        var thumbnail = "http://i3.ytimg.com/vi/" + videoId + "/hqdefault.jpg";
+        return thumbnail;
+    }
+    function extractVideoId(url) {
+        var startIndex = url.indexOf("/embed/");
+        if (startIndex === -1) {
+            return "";
+        }
+        startIndex += "/embed/".length;
+        var endIndex = url.indexOf("?", startIndex);
+        if (endIndex === -1) {
+            return url.substring(startIndex);
+        }
+        return url.substring(startIndex, endIndex);
     }
 
     return QuillResizeModule;

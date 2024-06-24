@@ -4,7 +4,7 @@ class Iframe {
 }
 
 class IframeClick {
-  static resolution: number = 200;
+  static resolution: number = 500;
   static iframes: Array<Iframe> = [];
   static interval: NodeJS.Timeout | null = null;
 
