@@ -82,7 +82,7 @@ function QuillResizeModule(quill: Quill, options?: QuillResizeModuleOptions) {
 
 function generateThumbnailUrl(videoUrl: string): string {
   const videoId = extractVideoId(videoUrl);
-  const thumbnail = `http://i3.ytimg.com/vi/${videoId}/hqdefault.jpg`;
+  const thumbnail = `http://i3.ytimg.com/vi/${videoId}/maxresdefault.jpg`;
   return thumbnail;
 }
 

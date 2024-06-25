@@ -19,14 +19,7 @@
   <script>
     Quill.register("modules/resize", window.QuillResizeModule);
 
-    var toolbarOptions = [
-      "bold",
-      "italic",
-      "underline",
-      "strike",
-      "image",
-      "video",
-    ];
+    var toolbarOptions = ["bold", "italic", "underline", "strike", "image", "video"];
     var quill = new Quill("#editor", {
       theme: "snow",
       modules: {
@@ -38,8 +31,7 @@
     });
 
     quill.on("text-change", (a, b, c) => {
-      document.getElementById("prev").innerHTML =
-        quill.scroll.domNode.innerHTML;
+      document.getElementById("prev").innerHTML = quill.scroll.domNode.innerHTML;
     });
   </script>
 </html>

@@ -330,7 +330,7 @@
     }
     function generateThumbnailUrl(videoUrl) {
         var videoId = extractVideoId(videoUrl);
-        var thumbnail = "http://i3.ytimg.com/vi/" + videoId + "/hqdefault.jpg";
+        var thumbnail = "http://i3.ytimg.com/vi/" + videoId + "/maxresdefault.jpg";
         return thumbnail;
     }
     function extractVideoId(url) {
