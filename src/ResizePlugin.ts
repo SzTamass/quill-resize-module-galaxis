@@ -49,11 +49,7 @@ class ResizePlugin {
   i18n: I18n;
   options: any;
 
-  constructor(
-    resizeTarget: ResizeElement,
-    container: HTMLElement,
-    options?: ResizePluginOption
-  ) {
+  constructor(resizeTarget: ResizeElement, container: HTMLElement, options?: ResizePluginOption) {
     this.i18n = new I18n(options?.locale || defaultLocale);
     this.options = options;
     this.resizeTarget = resizeTarget;
@@ -73,12 +69,14 @@ class ResizePlugin {
     this.startResize = this.startResize.bind(this);
     this.toolbarClick = this.toolbarClick.bind(this);
     this.toolbarInputChange = this.toolbarInputChange.bind(this);
+
+    this.handleKeydown = this.handleKeydown.bind(this);
+
     this.bindEvents();
   }
 
   initResizer() {
-    let resizer: HTMLElement | null =
-      this.container.querySelector("#editor-resizer");
+    let resizer: HTMLElement | null = this.container.querySelector("#editor-resizer");
     if (!resizer) {
       resizer = document.createElement("div");
       resizer.setAttribute("id", "editor-resizer");
@@ -108,9 +106,7 @@ class ResizePlugin {
       this.resizer.style.setProperty("width", el.clientWidth + "px");
       this.resizer.style.setProperty("height", el.clientHeight + "px");
 
-      document
-        .getElementsByName("ql-size")
-        .item(0).innerHTML = `${widthPercent.toFixed(0)}%`;
+      document.getElementsByName("ql-size").item(0).innerHTML = `${widthPercent.toFixed(0)}%`;
     }
   }
 
@@ -122,15 +118,14 @@ class ResizePlugin {
     }
     window.addEventListener("mouseup", this.endResize);
     window.addEventListener("mousemove", this.resizing);
+    window.addEventListener("keydown", this.handleKeydown);
   }
 
   _setStylesForToolbar(type: string, styles: string | undefined) {
     const storeKey = `_styles_${type}`;
     const style: CSSStyleDeclaration = this.resizeTarget.style;
     const originStyles = this.resizeTarget[storeKey];
-    style.cssText =
-      style.cssText.replaceAll(" ", "").replace(originStyles, "") +
-      `;${styles}`;
+    style.cssText = style.cssText.replaceAll(" ", "").replace(originStyles, "") + `;${styles}`;
     this.resizeTarget[storeKey] = styles;
 
     this.positionResizerToTarget(this.resizeTarget);
@@ -192,21 +187,24 @@ class ResizePlugin {
       heightPercent = rate * widthPercent;
     }
 
-    this.resizeTarget.style.setProperty(
-      "width",
-      Math.max(widthPercent, 1) + "%"
-    );
-    this.resizeTarget.style.setProperty(
-      "height",
-      Math.max(heightPercent, 1) + "%"
-    );
+    this.resizeTarget.style.setProperty("width", Math.max(widthPercent, 1) + "%");
+    this.resizeTarget.style.setProperty("height", Math.max(heightPercent, 1) + "%");
     this.positionResizerToTarget(this.resizeTarget);
+  }
+
+  handleKeydown(e: KeyboardEvent) {
+    const hasTarget = this.resizeTarget.clientWidth !== 0;
+    if ((e.key === "Delete" || e.key === "Backspace") && !hasTarget) {
+      document.getElementsByName("ql-size").item(0).innerHTML = `${hasTarget}%`;
+      this.destroy();
+    }
   }
 
   destroy() {
     this.container.removeChild(this.resizer as HTMLElement);
     window.removeEventListener("mouseup", this.endResize);
     window.removeEventListener("mousemove", this.resizing);
+    window.removeEventListener("keydown", this.handleKeydown);
     this.resizer = null;
   }
 }

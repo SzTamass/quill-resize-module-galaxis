@@ -125,6 +125,7 @@
             this.startResize = this.startResize.bind(this);
             this.toolbarClick = this.toolbarClick.bind(this);
             this.toolbarInputChange = this.toolbarInputChange.bind(this);
+            this.handleKeydown = this.handleKeydown.bind(this);
             this.bindEvents();
         }
         ResizePlugin.prototype.initResizer = function () {
@@ -148,9 +149,7 @@
                 this.resizer.style.setProperty("top", el.offsetTop + "px");
                 this.resizer.style.setProperty("width", el.clientWidth + "px");
                 this.resizer.style.setProperty("height", el.clientHeight + "px");
-                document
-                    .getElementsByName("ql-size")
-                    .item(0).innerHTML = widthPercent.toFixed(0) + "%";
+                document.getElementsByName("ql-size").item(0).innerHTML = widthPercent.toFixed(0) + "%";
             }
         };
         ResizePlugin.prototype.bindEvents = function () {
@@ -161,15 +160,14 @@
             }
             window.addEventListener("mouseup", this.endResize);
             window.addEventListener("mousemove", this.resizing);
+            window.addEventListener("keydown", this.handleKeydown);
         };
         ResizePlugin.prototype._setStylesForToolbar = function (type, styles) {
             var _a;
             var storeKey = "_styles_" + type;
             var style = this.resizeTarget.style;
             var originStyles = this.resizeTarget[storeKey];
-            style.cssText =
-                style.cssText.replaceAll(" ", "").replace(originStyles, "") +
-                    (";" + styles);
+            style.cssText = style.cssText.replaceAll(" ", "").replace(originStyles, "") + (";" + styles);
             this.resizeTarget[storeKey] = styles;
             this.positionResizerToTarget(this.resizeTarget);
             (_a = this.options) === null || _a === void 0 ? void 0 : _a.onChange(this.resizeTarget);
@@ -230,10 +228,18 @@
             this.resizeTarget.style.setProperty("height", Math.max(heightPercent, 1) + "%");
             this.positionResizerToTarget(this.resizeTarget);
         };
+        ResizePlugin.prototype.handleKeydown = function (e) {
+            var hasTarget = this.resizeTarget.clientWidth !== 0;
+            if ((e.key === "Delete" || e.key === "Backspace") && !hasTarget) {
+                document.getElementsByName("ql-size").item(0).innerHTML = hasTarget + "%";
+                this.destroy();
+            }
+        };
         ResizePlugin.prototype.destroy = function () {
             this.container.removeChild(this.resizer);
             window.removeEventListener("mouseup", this.endResize);
             window.removeEventListener("mousemove", this.resizing);
+            window.removeEventListener("keydown", this.handleKeydown);
             this.resizer = null;
         };
         return ResizePlugin;

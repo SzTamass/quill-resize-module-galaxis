@@ -5,16 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link
-      href="https://cdn.bootcdn.net/ajax/libs/quill/1.3.7/quill.snow.min.css"
+      crossorigin="anonymous"
+      integrity="sha384-7kltdnODhBho8GSWnwD9l9rilXkpuia4Anp4TKHPOrp8/MS/+083g4it4MYED/hc"
+      href="http://lib.baomitu.com/quill/2.0.0-dev.3/quill.snow.min.css"
       rel="stylesheet"
     />
-    <script src="https://cdn.bootcdn.net/ajax/libs/quill/1.3.7/quill.min.js"></script>
+    <script
+      crossorigin="anonymous"
+      integrity="sha384-MDio1/ps0nK1tabxUqZ+1w2NM9faPltR1mDqXcNleeuiSi0KBXqIsWofIp4r5A0+"
+      src="http://lib.baomitu.com/quill/2.0.0-dev.3/quill.min.js"
+    ></script>
     <script src="../dist/quill-resize-module.js"></script>
   </head>
   <body>
-    <div id="editor"></div>
-
-    <div id="prev"></div>
+    <div id="editor">
+      <p>Hello World!</p>
+      <p>Some initial <strong>bold</strong> text</p>
+      <p><br /></p>
+    </div>
   </body>
   <script>
     Quill.register("modules/resize", window.QuillResizeModule);
@@ -28,10 +36,6 @@
           locale: {},
         },
       },
-    });
-
-    quill.on("text-change", (a, b, c) => {
-      document.getElementById("prev").innerHTML = quill.scroll.domNode.innerHTML;
     });
   </script>
 </html>
